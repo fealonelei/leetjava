@@ -1,15 +1,10 @@
 package com.fealo.leetjava;
 
-import javafx.util.Pair;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import sun.security.util.Length;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.stream.IntStream;
-
-import static java.lang.Integer.MAX_VALUE;
 
 @SpringBootApplication
 public class LeetjavaApplication {
@@ -22,13 +17,15 @@ public class LeetjavaApplication {
 //
 //		int[] nums = {-1,0,1,2,-1,-4};
 //		solution.threeSum(nums);
-//
+
 //		SingleLinkedList singleLinkedList = new SingleLinkedList();
 //		singleLinkedList.addNode(1);
 //		singleLinkedList.addNode(2);
 //		singleLinkedList.addNode(3);
 //		singleLinkedList.addNode(4);
 //		singleLinkedList.addNode(5);
+//
+//		singleLinkedList.reverseListNode(singleLinkedList.pointer_head);
 
 //		solution.reverseBetween(singleLinkedList.pointer_head, 1, 3);
 //        solution.removeNthFromEnd(singleLinkedList.pointer_head, 5);
@@ -37,19 +34,42 @@ public class LeetjavaApplication {
 //        int[] kSmallNums2 = {};//-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 //        List<int[]> result = solution.kSmallestPairs(kSmallNums1, kSmallNums2, 5);
 //		System.out.println(result);
+//
+//		char[][] board = {	{'5','3','.','.','7','.','.','.','.'},
+//							{'6','.','.','1','9','5','.','.','.'},
+//							{'.','9','8','.','.','.','.','6','.'},
+//							{'8','.','.','.','6','.','.','.','3'},
+//							{'4','.','.','8','.','3','.','.','1'},
+//							{'7','.','.','.','2','.','.','.','6'},
+//							{'.','6','.','.','.','.','2','8','.'},
+//							{'.','.','.','4','1','9','.','.','5'},
+//							{'.','.','.','.','8','.','.','7','9'}};
+//
+//		boolean isValid = solution.isValidSudoku(board);
+//		System.out.println(isValid);
+//
+//        int[] citations = {4,4,0,0};
+//        int hIndex = solution.hIndex(citations);
+//
+//        int[] a = {4,9,5};
+//        int[] b = {9,4,9,8,4};
+//        int[] result = solution.intersect(a, b);
+//
+//        System.out.println(result);
 
-		char[][] board = {	{'5','3','.','.','7','.','.','.','.'},
-							{'6','.','.','1','9','5','.','.','.'},
-							{'.','9','8','.','.','.','.','6','.'},
-							{'8','.','.','.','6','.','.','.','3'},
-							{'4','.','.','8','.','3','.','.','1'},
-							{'7','.','.','.','2','.','.','.','6'},
-							{'.','6','.','.','.','.','2','8','.'},
-							{'.','.','.','4','1','9','.','.','5'},
-							{'.','.','.','.','8','.','.','7','9'}};
+//		solution.isValid("(){}{}[]");
 
-		boolean isValid = solution.isValidSudoku(board);
-		System.out.println(isValid);
+        int[] prices = {3,7,12,1,5,3,6,4,5,4,8};
+        solution.maxProfit(prices);
+
+        LRUCache lruCache = new LRUCache(5);
+
+		int[] array = {47, 29, 71,  99, 78, 19, 24, 47};
+		QuickSort quickSort = new QuickSort(array);
+		quickSort.sort();
+//		quickSort.print();
+		StringUtils.kmp_matcher("bacbababaabcbab", "ababaca");
+
 	}
 }
 
@@ -98,6 +118,26 @@ class SingleLinkedList {/*单链表类*/
         }
 
     }
+
+    public ListNode reverseListNode(ListNode listNode) {
+    	if (listNode == null || listNode.next == null) {
+    		return listNode;
+		}
+
+		ListNode qian = null;
+    	ListNode hou = null;
+
+    	while (listNode != null) {
+    		hou = listNode.next;
+    		listNode.next = qian;
+
+    		qian = listNode;
+    		listNode = hou;
+		}
+
+		return qian;
+	}
+
 }
 
 class Solution {
@@ -440,10 +480,145 @@ class Solution {
 		return true;
 	}
 
+	public void solveSudoku(char[][] board) {
+
+		List<Set> rowSets = new ArrayList<>(9);
+		List<Set> columnSets = new ArrayList<>(9);
+		List<Set> squareSets = new ArrayList<>(9);
+		for (int i = 0; i < 9; i++) {
+			rowSets.add(new HashSet(9));
+			columnSets.add(new HashSet(9));
+			squareSets.add(new HashSet(9));
+		}
+
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				if (board[i][j] != '.') {
+					continue;
+				}
+
+
+
+
+
+
+			}
+		}
+
+
+
+
+	}
+
+
+    public int hIndex(int[] citations) {
+        if (citations == null || citations.length == 0) {
+            return 0;
+        }
+
+        int[] nums = IntStream.of(citations)
+                .boxed()
+                .sorted(Comparator.reverseOrder())
+                .mapToInt(Integer::intValue)
+                .toArray();
+
+        for(int i = 0; i < nums.length; i++) {
+            if (i+1 >= nums[i]) {
+                return Math.max(i, nums[i]);
+            }
+        }
+
+	    return nums.length;
+    }
+
+	public int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+
+        int i = 0, j = 0;
+        List<Integer> list = new ArrayList<>();
+
+        while (i < nums1.length && j < nums2.length) {
+            if (nums1[i] == nums2[j]) {
+                list.add(nums1[i]);
+                i++;
+                j++;
+            } else if (nums1[i] < nums2[j]) {
+                i++;
+            } else if (nums1[i] > nums2[j]) {
+                j++;
+            }
+        }
+        return list.stream().mapToInt(n->n).toArray();
+	}
+
+	public boolean isValid(String s) {
+
+		if (s == null || s.isEmpty() || s.length() % 2 != 0) {
+			return false;
+		}
+
+		Stack<Character> stack = new Stack<>();
+
+		for(int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+
+			if (c == '(' || c == '[' || c == '{') {
+				stack.push(c);
+			} else {
+				if (stack.empty()) return false;
+
+				if (c == ')' && stack.pop() != '(') return false;
+				if (c == ']' && stack.pop() != '[') return false;
+				if (c == '}' && stack.pop() != '{') return false;
+			}
+		}
+
+		return stack.empty();
+	}
+
+	public int maxProfit(int[] prices) {
+
+        if (prices == null || prices.length < 2) {
+            return 0;
+        }
+
+        int minPrice = prices[0];
+        int maxProfit = 0;
+
+        for(int i = 1; i < prices.length; i++) {
+            if(prices[i] < minPrice) {
+                minPrice = prices[i];
+            } else if (prices[i] - minPrice > maxProfit) {
+                maxProfit = prices[i] - minPrice;
+            }
+        }
+
+        return maxProfit;
+	}
+
+	public int removeDuplicates(int[] nums) {
+		if (nums == null || nums.length == 0 || nums.length == 1) {
+			return nums.length;
+		}
+
+		int count = 1;
+		int lastOne = nums[0];
+
+		for (int i = 1; i < nums.length; i++) {
+			if (nums[i] == lastOne) {
+				continue;
+			}
+			lastOne = nums[i];
+			nums[count] = nums[i];
+			count++;
+		}
+
+
+		return count;
+	}
+
 }
-
-
-
 
 
 
