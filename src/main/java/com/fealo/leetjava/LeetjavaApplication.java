@@ -72,7 +72,8 @@ public class LeetjavaApplication {
 
 		N_Queen nQueen = new N_Queen();
 		List<List<String>> llString = nQueen.solveNQueens(4);
-		System.out.println(llString);
+		int total = nQueen.totalNQueens(4);
+		System.out.println(total);
 	}
 }
 

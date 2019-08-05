@@ -13,6 +13,7 @@ public class N_Queen {
     private Integer chessInitial = -1;
     private String initialValue = ".";
     private int QUEEN;
+    private int[] chessArray;
 
     public List<List<String>> solveNQueens(int n) {
         QUEEN = n;
@@ -69,6 +70,66 @@ public class N_Queen {
         }
 
         return arrayListList;
+    }
+
+    public int totalNQueens(int n) {
+        QUEEN = n;
+
+        int solutions = 0;
+        if (n <= 0 || n > 1 && n < 4) {
+            return solutions;
+        }
+
+        chessArray = new int[n];
+        for (int k = 0; k < chessArray.length; k++) {
+            chessArray[k] = -1;
+        }
+
+        int i = 0, j = 0;
+        while (i < QUEEN) {
+            while (j < QUEEN) {
+                if (validArray(i, j)) {
+                    chessArray[i] = j;
+                    j = 0;
+                    break;
+                } else {
+                    ++j;
+                }
+            }
+
+            if (chessArray[i] == chessInitial) {
+                if (i == 0) {
+                    break;
+                } else {
+                    --i;
+                    j = chessArray[i] + 1;
+                    chessArray[i] = chessInitial;
+                    continue;
+                }
+            }
+
+            if (i == QUEEN - 1) {
+                ++solutions;
+
+                j = chessArray[i] + 1;
+                chessArray[i] = chessInitial;
+                continue;
+            }
+
+            ++i;
+        }
+
+        return solutions;
+    }
+
+    private boolean validArray(int row, int col) {
+        for (int i = 0; i < row; i++) {
+            if (chessArray[i] == col || Math.abs(row - i) == Math.abs(col - chessArray[i]) ) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private boolean valid(int row, int col) {
