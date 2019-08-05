@@ -70,6 +70,9 @@ public class LeetjavaApplication {
 //		quickSort.print();
 		StringUtils.kmp_matcher("bacbababaabcbab", "ababaca");
 
+		N_Queen nQueen = new N_Queen();
+		List<List<String>> llString = nQueen.solveNQueens(4);
+		System.out.println(llString);
 	}
 }
 
