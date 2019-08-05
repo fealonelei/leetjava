@@ -622,6 +622,16 @@ class Solution {
 		return count;
 	}
 
+	public int titleToNumber(String s) {
+		int number = 0;
+		for (int i = 0; i < s.length(); i++) {
+			char cc = s.charAt(i);
+
+			number = 26 * number + cc - 0x40;
+		}
+
+		return number;
+	}
 }
 
 
