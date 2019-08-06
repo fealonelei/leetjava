@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
@@ -59,21 +60,25 @@ public class LeetjavaApplication {
 
 //		solution.isValid("(){}{}[]");
 
-        int[] prices = {3,7,12,1,5,3,6,4,5,4,8};
-        solution.maxProfit(prices);
-
-        LRUCache lruCache = new LRUCache(5);
-
-		int[] array = {47, 29, 71,  99, 78, 19, 24, 47};
-		QuickSort quickSort = new QuickSort(array);
-		quickSort.sort();
+//        int[] prices = {3,7,12,1,5,3,6,4,5,4,8};
+//        solution.maxProfit(prices);
+//
+//        LRUCache lruCache = new LRUCache(5);
+//
+//		int[] array = {47, 29, 71,  99, 78, 19, 24, 47};
+//		QuickSort quickSort = new QuickSort(array);
+//		quickSort.sort();
 //		quickSort.print();
-		StringUtils.kmp_matcher("bacbababaabcbab", "ababaca");
+//		StringUtils.kmp_matcher("bacbababaabcbab", "ababaca");
 
-		N_Queen nQueen = new N_Queen();
-		List<List<String>> llString = nQueen.solveNQueens(4);
-		int total = nQueen.totalNQueens(4);
-		System.out.println(total);
+//		N_Queen nQueen = new N_Queen();
+//		List<List<String>> llString = nQueen.solveNQueens(4);
+//		int total = nQueen.totalNQueens(4);
+//		System.out.println(total);
+
+		int[] nums = {1,2,3};
+		List<List<Integer>> llInteger = solution.subsets(nums);
+		System.out.println(llInteger);
 	}
 }
 
@@ -94,6 +99,32 @@ class ListNode {
         System.out.println(this.val+" ");
     }
 }
+
+class BiNode {
+	private int val;
+	private BiNode left;
+	private BiNode right;
+
+	boolean isVisited = false;
+
+	BiNode(int x) { val = x; }
+
+	public void setLeft(BiNode val_node) { left = val_node; }
+	public BiNode getLeft() { return left; }
+	public void setRight(BiNode val_node) { right = val_node; }
+	public BiNode getRight() { return right; }
+
+	public int getVal() {
+		isVisited = true;
+		return val;
+	}
+
+}
+
+class BiTree {
+
+}
+
 
 class SingleLinkedList {/*单链表类*/
 
@@ -632,6 +663,39 @@ class Solution {
 
 		return number;
 	}
+
+	public List<List<Integer>> subsets(int[] nums) {
+		int length = nums.length;
+		List<List<Integer>> subsets = new ArrayList<>(2<<length);
+		if (nums == null || nums.length == 0) {
+			return subsets;
+		}
+
+		subsets.add(Collections.emptyList());
+		for (int i: nums) {
+			int preSize = subsets.size();
+			for (int k = 0; k < preSize; k++) {
+				List<Integer> combineSubset = new ArrayList<>(subsets.get(k));
+				combineSubset.add(i);
+				subsets.add(combineSubset);
+			}
+		}
+
+		return subsets;
+	}
+
+	private int[] num(int index, int[] nums) {
+		int[] result = new int[nums.length - 1];
+		for (int i = 0; i < nums.length-1; i++) {
+			if (i < index) {
+				result[i] = nums[i];
+			} else if (i > index) {
+				result[i] = nums[i+1];
+			}
+		}
+		return result;
+	}
+
 }
 
 
