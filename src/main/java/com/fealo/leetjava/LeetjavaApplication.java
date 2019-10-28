@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class LeetjavaApplication {
@@ -79,6 +80,9 @@ public class LeetjavaApplication {
 		int[] nums = {1,2,3};
 		List<List<Integer>> llInteger = solution.subsets(nums);
 		System.out.println(llInteger);
+
+		List<Integer> row = solution.getRow(5);
+		System.out.println(row);
 	}
 }
 
@@ -693,6 +697,56 @@ class Solution {
 				result[i] = nums[i+1];
 			}
 		}
+		return result;
+	}
+
+	public List<List<Integer>> subsetsWithDup(int[] nums) {
+		int length = nums.length;
+		List<List<Integer>> subsets = new ArrayList<>(2<<length);
+		if (nums == null || nums.length == 0) {
+			return subsets;
+		}
+
+		subsets.add(Collections.emptyList());
+		for (int i: nums) {
+			int preSize = subsets.size();
+			for (int k = 0; k < preSize; k++) {
+				List<Integer> combineSubset = new ArrayList<>(subsets.get(k));
+				combineSubset.add(i);
+				Collections.sort(combineSubset);
+				if (!subsets.contains(combineSubset)) {
+					subsets.add(combineSubset);
+				}
+			}
+		}
+
+		return subsets;
+	}
+
+	public List<Integer> getRow(int rowIndex) {
+		List<Integer> result = new ArrayList<>(rowIndex+1);
+
+		if (rowIndex == 0) {
+			result.add(1);
+			return result;
+		} else if (rowIndex == 1) {
+			result.add(1);
+			result.add(1);
+			return result;
+		}
+
+		result.add(1);
+		result.add(1);
+		List<Integer> temp = new ArrayList<Integer>(Collections.nCopies(rowIndex+1, 0));
+		for (int i = 2; i <= rowIndex; i++) {
+			temp.set(0, 1);
+			temp.set(i, 1);
+			for (int j = 1; j < result.size(); j++) {
+				temp.set(j, result.get(j-1)+result.get(j));
+			}
+			result = new ArrayList<>(temp.subList(0,i+1));
+		}
+
 		return result;
 	}
 
