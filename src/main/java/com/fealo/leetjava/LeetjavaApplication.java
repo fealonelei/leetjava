@@ -86,6 +86,9 @@ public class LeetjavaApplication {
 
 		boolean isValid = solution.checkValidString("*()()*())*(*(*)))(()");
 		System.out.println(isValid);
+
+		int[] result = solution.diStringMatch("DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIIDIDIDIDDDDIDIDIDIDIIIIDDIDIDID");
+		System.out.println(result);
 	}
 }
 
@@ -781,6 +784,25 @@ class Solution {
 		}
 
 		return true;
+	}
+
+	public int[] diStringMatch(String s) {
+		int length = s.length();
+		int[] result = new int[length+1];
+		int low = 0, high = length;
+
+		for (int i = 0; i < length; i++) {
+			char c = s.charAt(i);
+
+			if (c == 'I') {
+				result[i] = low++;
+			} else {
+				result[i] = high--;
+			}
+		}
+		result[length] = low;
+
+		return result;
 	}
 }
 
