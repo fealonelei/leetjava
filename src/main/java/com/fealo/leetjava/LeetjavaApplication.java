@@ -83,6 +83,9 @@ public class LeetjavaApplication {
 
 		List<Integer> row = solution.getRow(5);
 		System.out.println(row);
+
+		boolean isValid = solution.checkValidString("*()()*())*(*(*)))(()");
+		System.out.println(isValid);
 	}
 }
 
@@ -750,6 +753,35 @@ class Solution {
 		return result;
 	}
 
+	public boolean checkValidString(String s) {
+		if (s == null) return false;
+		if (s.length() == 0) return true;
+
+		int leftGreedy = 0;
+		for (int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+			if (c == '(' || c == '*') {
+				leftGreedy++;
+			} else {
+				leftGreedy--;
+			}
+			if (leftGreedy < 0) return false;
+		}
+		if (leftGreedy == 0) return true;
+
+		int rightGreedy = 0;
+		for (int i = s.length() - 1; i >= 0; i--) {
+			char c = s.charAt(i);
+			if (c == ')' || c == '*') {
+				rightGreedy++;
+			} else {
+				rightGreedy--;
+			}
+			if (rightGreedy < 0) return false;
+		}
+
+		return true;
+	}
 }
 
 
