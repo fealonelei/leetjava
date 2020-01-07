@@ -77,17 +77,21 @@ public class LeetjavaApplication {
 //		int total = nQueen.totalNQueens(4);
 //		System.out.println(total);
 
-		int[] nums = {1,2,3};
-		List<List<Integer>> llInteger = solution.subsets(nums);
-		System.out.println(llInteger);
+//		int[] nums = {1,2,3};
+//		List<List<Integer>> llInteger = solution.subsets(nums);
+//		System.out.println(llInteger);
+//
+//		List<Integer> row = solution.getRow(5);
+//		System.out.println(row);
+//
+//		boolean isValid = solution.checkValidString("*()()*())*(*(*)))(()");
+//		System.out.println(isValid);
+//
+//		int[] result = solution.diStringMatch("DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIIDIDIDIDDDDIDIDIDIDIIIIDDIDIDID");
+//		System.out.println(result);
 
-		List<Integer> row = solution.getRow(5);
-		System.out.println(row);
-
-		boolean isValid = solution.checkValidString("*()()*())*(*(*)))(()");
-		System.out.println(isValid);
-
-		int[] result = solution.diStringMatch("DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIIDIDIDIDDDDIDIDIDIDIIIIDDIDIDID");
+		int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
+		List<Integer> result = solution.spiralOrder(matrix);
 		System.out.println(result);
 	}
 }
@@ -803,6 +807,38 @@ class Solution {
 		result[length] = low;
 
 		return result;
+	}
+
+	public List<Integer> spiralOrder(int[][] matrix){
+		List answer = new ArrayList();
+		if (matrix.length == 0) return answer;
+		int row = matrix.length, column = matrix[0].length;
+		boolean[][] hasVisited = new boolean[row][column];
+
+		int[] directionRow = {0,1,0,-1};
+		int[] directionColumn = {1,0,-1,0};
+		int currentRow = 0, currentColumn = 0, direction = 0;
+
+		for (int i = 0; i < row * column; i++) {
+			answer.add(matrix[currentRow][currentColumn]);
+			hasVisited[currentRow][currentColumn] = true;
+
+			int nextRowPosition = currentRow + directionRow[direction];
+			int nextColumnPosition = currentColumn + directionColumn[direction];
+
+			if (0 <= nextRowPosition && nextRowPosition < row
+					&& 0 <= nextColumnPosition && nextColumnPosition < column &&
+					!hasVisited[nextRowPosition][nextColumnPosition]) {
+				currentRow = nextRowPosition;
+				currentColumn = nextColumnPosition;
+			} else {
+				direction = (direction+1)%4;
+				currentRow += directionRow[direction];
+				currentColumn += directionColumn[direction];
+			}
+		}
+
+		return answer;
 	}
 }
 
