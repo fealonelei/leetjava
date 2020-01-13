@@ -840,6 +840,21 @@ class Solution {
 
 		return answer;
 	}
+
+	public boolean canJump(int[] nums) {
+		/* implement in Swift
+		var iiii = nums.count - 1
+		for i in stride(from: nums.count - 1, through: 0, by: -1) {
+			if nums[i] + i >= iiii {
+				iiii = i
+			}
+		}
+
+		return iiii == 0
+
+		*/
+		return false;
+	}
 }
 
 
