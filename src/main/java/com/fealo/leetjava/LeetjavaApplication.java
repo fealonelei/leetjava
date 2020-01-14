@@ -20,9 +20,9 @@ public class LeetjavaApplication {
 //		int[] nums = {-1,0,1,2,-1,-4};
 //		solution.threeSum(nums);
 
-//		SingleLinkedList singleLinkedList = new SingleLinkedList();
-//		singleLinkedList.addNode(1);
-//		singleLinkedList.addNode(2);
+		SingleLinkedList singleLinkedList = new SingleLinkedList();
+		singleLinkedList.addNode(1);
+		singleLinkedList.addNode(2);
 //		singleLinkedList.addNode(3);
 //		singleLinkedList.addNode(4);
 //		singleLinkedList.addNode(5);
@@ -94,8 +94,10 @@ public class LeetjavaApplication {
 //		List<Integer> result = solution.spiralOrder(matrix);
 //		System.out.println(result);
 
-		int result = solution.divide(20, -3);
-		System.out.print(result);
+//		int result = solution.divide(20, -3);
+//		System.out.print(result);
+
+		ListNode node = solution.rotateRight(singleLinkedList.pointer_head, 2);
 	}
 }
 
@@ -877,6 +879,56 @@ class Solution {
             a1 -= a2 << pow;
         }
         return (dividend >= 0) == (divisor >= 0) ? result : -result;
+    }
+
+    public ListNode rotateRight(ListNode head, int k) {
+        if (k < 0 || head == null) {
+    		return null;
+    	}
+
+    	if (k == 0) {
+    		return head;
+    	}
+
+    	ListNode first = head;
+
+    	int length = 0;
+    	ListNode tmpHead = head;
+    	while (tmpHead != null) {
+    		tmpHead = tmpHead.next;
+    		length++;
+    	}
+
+    	int stride = 0;
+    	if (k >= length) {
+    		stride = k % length;
+    	} else {
+    		stride = k;
+    	}
+    	
+    	if (length == 1 || stride == 0) {
+    		return head;
+    	}
+
+    	ListNode fast, slow;
+    	fast = head;
+    	slow = head;
+
+    	int i = stride;
+    	for(; i > 0 && head != null; i--) {
+    		fast = fast.next;
+    	}
+
+    	while(fast.next != null) {
+    		fast = fast.next;
+    		slow = slow.next;
+    	}
+
+    	head = slow.next;
+    	slow.next = null;
+    	fast.next = first;
+
+    	return head;
     }
 }
 
