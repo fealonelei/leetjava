@@ -90,9 +90,12 @@ public class LeetjavaApplication {
 //		int[] result = solution.diStringMatch("DIDIDIDIDIDIDIDIDIDIDIDIDIDIDIIDIDIDIDDDDIDIDIDIDIIIIDDIDIDID");
 //		System.out.println(result);
 
-		int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
-		List<Integer> result = solution.spiralOrder(matrix);
-		System.out.println(result);
+//		int[][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
+//		List<Integer> result = solution.spiralOrder(matrix);
+//		System.out.println(result);
+
+		int result = solution.divide(20, -3);
+		System.out.print(result);
 	}
 }
 
@@ -855,6 +858,26 @@ class Solution {
 		*/
 		return false;
 	}
+	public int divide(int dividend, int divisor) {
+        if (divisor == 1) {
+            return dividend;
+        }
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
+        int result = 0;
+        int a1 = Math.abs(dividend);
+        int a2 = Math.abs(divisor);
+        while (a1 - a2 >= 0) {
+            int pow = 0;
+            while (a1 - (a2 << 1 << pow) >= 0) {
+                pow++;
+            }
+            result += 1 << pow;
+            a1 -= a2 << pow;
+        }
+        return (dividend >= 0) == (divisor >= 0) ? result : -result;
+    }
 }
 
 
