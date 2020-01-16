@@ -20,9 +20,9 @@ public class LeetjavaApplication {
 //		int[] nums = {-1,0,1,2,-1,-4};
 //		solution.threeSum(nums);
 
-		SingleLinkedList singleLinkedList = new SingleLinkedList();
-		singleLinkedList.addNode(1);
-		singleLinkedList.addNode(2);
+//		SingleLinkedList singleLinkedList = new SingleLinkedList();
+//		singleLinkedList.addNode(1);
+//		singleLinkedList.addNode(2);
 //		singleLinkedList.addNode(3);
 //		singleLinkedList.addNode(4);
 //		singleLinkedList.addNode(5);
@@ -97,7 +97,8 @@ public class LeetjavaApplication {
 //		int result = solution.divide(20, -3);
 //		System.out.print(result);
 
-		ListNode node = solution.rotateRight(singleLinkedList.pointer_head, 2);
+//		ListNode node = solution.rotateRight(singleLinkedList.pointer_head, 2);
+		BoyerMoore.bmtest("abracadabra", "abacadabrabracabracadabrabrabracad");
 	}
 }
 
@@ -143,7 +144,6 @@ class BiNode {
 class BiTree {
 
 }
-
 
 class SingleLinkedList {/*单链表类*/
 
@@ -930,6 +930,9 @@ class Solution {
 
     	return head;
     }
+
+
+	
 }
 
 
