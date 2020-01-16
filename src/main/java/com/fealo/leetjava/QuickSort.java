@@ -1,8 +1,5 @@
 package com.fealo.leetjava;
 
-import com.sun.tools.javac.code.Attribute;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 
