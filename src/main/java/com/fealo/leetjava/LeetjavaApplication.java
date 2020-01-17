@@ -98,7 +98,10 @@ public class LeetjavaApplication {
 //		System.out.print(result);
 
 //		ListNode node = solution.rotateRight(singleLinkedList.pointer_head, 2);
-		BoyerMoore.bmtest("abracadabra", "abacadabrabracabracadabrabrabracad");
+//		BoyerMoore.bmtest("rab", "abacadabrabracabracadabrabrabracad");
+
+		List<String> result = solution.letterCombinations("");
+		System.out.println(result);
 	}
 }
 
@@ -564,7 +567,6 @@ class Solution {
 
 	}
 
-
     public int hIndex(int[] citations) {
         if (citations == null || citations.length == 0) {
             return 0;
@@ -931,8 +933,44 @@ class Solution {
     	return head;
     }
 
+	public List<String> letterCombinations(String digits) {
+		if (digits == null) {
+			return null;
+		}
 
-	
+		List<String> result = new ArrayList();
+		List<String> atlases = Arrays.asList("abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz");
+		
+		if (digits.length() == 0) {
+			return result;
+		}
+		
+		for(int i = 0; i < digits.length(); i++) {
+			int index = digits.charAt(i) - 0x32;
+			if (index < 0 || index > 7) {
+				break;
+			}
+			
+			String atlas = atlases.get(index);
+			if (result.isEmpty()) {
+				for (int tmp = 0; tmp < atlas.length(); tmp++) {
+					String s = String.valueOf(atlas.charAt(tmp));
+					result.add(s);
+				}
+				continue;
+			}
+			List<String> tmpResult = new ArrayList<>();
+			for(int j = 0; j < atlas.length(); j++) {
+				for (String string : result) {
+					String a = new StringBuilder().append(string).append(String.valueOf(atlas.charAt(j))).toString();
+					tmpResult.add(a);
+				}
+			}
+			result = tmpResult;
+		}
+		return result; 
+	}
+		
 }
 
 
