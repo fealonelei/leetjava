@@ -100,7 +100,10 @@ public class LeetjavaApplication {
 //		ListNode node = solution.rotateRight(singleLinkedList.pointer_head, 2);
 //		BoyerMoore.bmtest("rab", "abacadabrabracabracadabrabrabracad");
 
-		List<String> result = solution.letterCombinations("");
+//		List<String> result = solution.letterCombinations("");
+//		System.out.println(result);
+
+		List<String> result = solution.generateParenthesis(3);
 		System.out.println(result);
 	}
 }
@@ -971,6 +974,33 @@ class Solution {
 		return result; 
 	}
 		
+	public List<String> generateParenthesis(int n) {
+		if (n == 0) {
+			return Arrays.asList();
+		}
+
+		List<String> result = new ArrayList();
+		backtrack(result, "", 0, 0, n);
+
+		return result;
+	}
+
+	private void backtrack(List<String> result, String currentString, int open, int close, int max) {
+		if (currentString.length() == max * 2) {
+			result.add(currentString);
+			return;
+		}
+		if (open < max) {
+			backtrack(result, currentString+"(", open+1, close, max);
+		}
+
+		if (close < open) {
+			backtrack(result, currentString+")", open, close+1, max);
+		}
+
+	}
+
+
 }
 
 
