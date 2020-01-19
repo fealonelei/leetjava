@@ -103,8 +103,26 @@ public class LeetjavaApplication {
 //		List<String> result = solution.letterCombinations("");
 //		System.out.println(result);
 
-		List<String> result = solution.generateParenthesis(3);
-		System.out.println(result);
+//		List<String> result = solution.generateParenthesis(3);
+//		System.out.println(result);
+
+		SingleLinkedList singleLinkedList1 = new SingleLinkedList();
+		singleLinkedList1.addNode(1);
+		singleLinkedList1.addNode(4);
+		singleLinkedList1.addNode(5);
+
+		SingleLinkedList singleLinkedList2 = new SingleLinkedList();
+		singleLinkedList2.addNode(1);
+		singleLinkedList2.addNode(3);
+		singleLinkedList2.addNode(4);
+
+		SingleLinkedList singleLinkedList3 = new SingleLinkedList();
+		singleLinkedList3.addNode(2);
+		singleLinkedList3.addNode(6);
+
+		ListNode[] lists = {singleLinkedList1.pointer_head, singleLinkedList2.pointer_head, singleLinkedList3.pointer_head};
+		ListNode listNode = solution.mergeKLists(lists);
+		System.out.println(listNode);
 	}
 }
 
@@ -997,39 +1015,43 @@ class Solution {
 		if (close < open) {
 			backtrack(result, currentString+")", open, close+1, max);
 		}
-
 	}
 
+	public ListNode mergeKLists(ListNode[] lists) {
+		if (lists == null || lists.length == 0) {
+			return null;
+		}
 
+		ListNode nListNode = new ListNode(0);
+		ListNode currentNode = nListNode;
+
+		ListNode selectedNode = lists[0];
+		int selectedIndex = 0;
+
+		for(;;) {
+			boolean allEmpty = true;
+
+			selectedNode = lists[0];
+			selectedIndex = 0;
+			for (int i = 0; i < lists.length; i++) {
+				if (lists[i] != null) {
+					allEmpty = false;
+					if (selectedNode == null) {
+						selectedNode = lists[i];
+						selectedIndex = i;
+					} else if (lists[i].val < selectedNode.val) {
+						selectedNode = lists[i];
+						selectedIndex = i;
+					}
+				}
+			}
+			if (allEmpty) {
+					break; 
+				}
+			currentNode.next = selectedNode;
+			lists[selectedIndex] = lists[selectedIndex].next;
+			currentNode = currentNode.next;
+		}
+		return nListNode.next;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
